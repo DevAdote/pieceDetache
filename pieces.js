@@ -1,12 +1,15 @@
 // Récupération des pièces depuis le fichier JSON
-const reponse = await fetch("pieces-autos.json");
-const pieces = await reponse.json();
+    const reponse = await fetch("pieces-autos.json");
+    const pieces = await reponse.json();
 
     const article = pieces[0];
+
 	const imageElement = document.createElement("img");
 	imageElement.src = article.image;
+
 	const nomElement = document.createElement("h2");
 	nomElement.innerText = article.nom;
+
 	const prixElement = document.createElement("p");
 	// prixElement.innerText = `Prix: ${article.prix} €`;
     prixElement.innerText = `Prix: ${article.prix} € (${article.prix < 35 ? "€" : "€€€"})`;   //L’opérateur ternaire s’utilise lorsque l’on doit choisir entre deux possibilité
@@ -19,8 +22,18 @@ const pieces = await reponse.json();
                                                                             // il prend la valeur de substitution lorsque la valeur est null, et donc qu’elle n’a pas de valeur, ou bien lorsqu’elle est undefined,   
 
 
+    const descriptionElement = document.createElement("p");
+    descriptionElement.innerText = article.description ?? "(Pas de description pour le moment.)";
+
+    const disponElement = document.createElement("p");
+    disponElement.innerHTML = `Disponibilite: ${article.disponibilite = true ? "En stock" : "Rupture de stock"}`
+
+    //Affichage des elements dans le DOM
+
 	const sectionFiches = document.querySelector(".fiches");
 	sectionFiches.appendChild(imageElement);
 	sectionFiches.appendChild(nomElement);
 	sectionFiches.appendChild(prixElement);
 	sectionFiches.appendChild(categorieElement);
+    sectionFiches.appendChild(descriptionElement);
+    sectionFiches.appendChild(disponElement);
