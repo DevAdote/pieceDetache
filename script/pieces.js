@@ -48,7 +48,7 @@
  }
 	
 
-// Gestion des boutons pour le trie
+// Gestion des boutons pour le trie croissant
 const boutonTrier = document.querySelector(".btn-trier");
 
 boutonTrier.addEventListener("click", function () {
@@ -68,4 +68,29 @@ boutonFiltrer.addEventListener("click", function () {
    const piecesFiltrees = pieces.filter(function (piece) {
        return piece.prix <= 35;
    });
+   console.log(piecesFiltrees)
+});
+
+
+
+// Gestion des boutons pour le trie decroissant
+const btnTrieDecroit = document.querySelector(".btn-trierDecroit")
+btnTrieDecroit.addEventListener("click",()=>{
+    const piecesOrdonnes = Array.from(pieces);
+
+    piecesOrdonnes.sort(function (a,b){
+        return b.prix - a.prix;
+    })
+
+    console.log(piecesOrdonnes)
+});
+
+
+// Gestion des boutons pour le filtre sans description
+const boutonFiltrerDecroit = document.querySelector(".btn-filtrerDescript")
+boutonFiltrerDecroit.addEventListener("click",()=>{
+    const pieceFiltre = pieces.filter(function (piece){
+        return piece.description;
+    });
+    console.log(pieceFiltre);
 });
