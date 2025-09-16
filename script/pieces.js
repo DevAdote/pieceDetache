@@ -47,3 +47,16 @@
         pieceElement.appendChild(disponElement);
  }
 	
+
+// Gestion des boutons pour le trie
+const boutonTrier = document.querySelector(".btn-trier");
+
+boutonTrier.addEventListener("click", function () {
+  const piecesOrdonnees = Array.from(pieces);
+
+  piecesOrdonnees.sort(function (a, b) {
+    return a.prix - b.prix;
+  });
+
+  console.log(piecesOrdonnees);
+});
