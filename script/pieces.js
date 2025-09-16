@@ -60,3 +60,12 @@ boutonTrier.addEventListener("click", function () {
 
   console.log(piecesOrdonnees);
 });
+
+// Gestion des boutons pour le filtre
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+
+boutonFiltrer.addEventListener("click", function () {
+   const piecesFiltrees = pieces.filter(function (piece) {
+       return piece.prix <= 35;
+   });
+});
