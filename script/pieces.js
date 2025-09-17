@@ -2,6 +2,8 @@
 const reponse = await fetch('../pieces-autos.json');
 const pieces = await reponse.json();
 
+
+//Fonction qui permettra de mettre a jour l'affichage de la page 
 function genererPieces(pieces){
     for (let i = 0; i < pieces.length; i++) {
 
@@ -54,7 +56,7 @@ boutonTrier.addEventListener("click", function () {
     genererPieces(piecesOrdonnees);
 });
 
-
+//gestion du boutton pour le filtre
 const boutonFiltrer = document.querySelector(".btn-filtrer");
 
 boutonFiltrer.addEventListener("click", function () {
@@ -80,7 +82,7 @@ boutonDecroissant.addEventListener("click", function () {
 });
 
 
-
+//gestion du boutton pour le filtre
 const boutonNoDescription = document.querySelector(".btn-nodesc");
 
 boutonNoDescription.addEventListener("click", function () {
@@ -92,6 +94,8 @@ boutonNoDescription.addEventListener("click", function () {
 });
 
 
+
+//Gestion  pour les pieces abordables avec la fonction map
 const noms = pieces.map(piece => piece.nom);
 for(let i = pieces.length -1 ; i >= 0; i--){
     if(pieces[i].prix > 35){
@@ -118,7 +122,8 @@ document.querySelector('.abordables')
 
 
 
-//Code Exercice 
+
+//Gestion  pour les pieces disponibles avec la fonction map
 const nomsDisponibles = pieces.map(piece => piece.nom)
 const prixDisponibles = pieces.map(piece => piece.prix)
 
@@ -141,6 +146,9 @@ const pElementDisponible = document.createElement('p')
 pElementDisponible.innerText = "Pièces disponibles:";
 document.querySelector('.disponibles').appendChild(pElementDisponible).appendChild(disponiblesElement)
 
+
+
+//Gestion de l'input de type range pour les prix maximum
 const inputPrixMax = document.querySelector('#prix-max')
 inputPrixMax.addEventListener('input', function(){
     const piecesFiltrees = pieces.filter(function(piece){
