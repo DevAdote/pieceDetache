@@ -157,3 +157,5 @@ inputPrixMax.addEventListener('input', function(){
     document.querySelector(".fiches").innerHTML = "";
     genererPieces(piecesFiltrees);  
 })
+
+//Debut de la 3eme partie du cours
