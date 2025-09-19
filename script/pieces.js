@@ -25,7 +25,12 @@ function genererPieces(pieces){
         descriptionElement.innerText = article.description ?? "Pas de description pour le moment.";
         const stockElement = document.createElement("p");
         stockElement.innerText = article.disponibilite ? "En stock" : "Rupture de stock";
+        //Ajout des boutons pour les avis de chaque article 
+        const avisBouton = document.createElement("button");
+        avisBouton.dataset.id = article.id;
+        avisBouton.textContent = "Afficher les avis";
         
+
         // On rattache la balise article a la section Fiches
         sectionFiches.appendChild(pieceElement);
         // On rattache l’image à pieceElement (la balise article)
@@ -36,6 +41,8 @@ function genererPieces(pieces){
         //Ajout des éléments au DOM pour l'exercice
         pieceElement.appendChild(descriptionElement);
         pieceElement.appendChild(stockElement);
+        //Affichage des boutons sur le DOM
+        pieceElement.appendChild(avisBouton);
     
      }
 }
