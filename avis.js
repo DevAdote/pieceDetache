@@ -10,11 +10,24 @@ export function ajoutListenersAvis() {
  
     for (let i = 0; i < piecesElements.length; i++) {
  
-     piecesElements[i].addEventListener("click", function (event) {
- 
+     piecesElements[i].addEventListener("click", async function (event) {
+    // Pour traiter la réponse du serveur, commençons par stocker le résultat de la fonction dans une constante, afin d'attendre le retour de la réponse
+    // La réponse de l’API prend la forme d’une chaîne de caractères au format JSON. Nous devons donc désérialiser ce JSON, c’est-à-dire reconstruire les données décrites par la chaîne de caractères dans la mémoire de l’ordinateur.
+
         const id = event.target.dataset.id;
-        fetch(`http://localhost:8081/pieces/${id}/avis`);
- 
+        const reponse = await fetch(`http://localhost:8081/pieces/${id}/avis`);
+
+    // Pour y parvenir, nous rajoutons un appel à la fonction JSON sur l’objet reponse. Il faut également utiliser le mot clé await, car cette opération est aussi asynchrone
+        const avis = await reponse.json();
+    
+    //Ajout des avis aux domes
+        const pieceElement = event.target.parentElement;
+
+        const avisElement = document.createElement("p");
+        for (let i = 0; i < avis.length; i++) {
+            avisElement.innerHTML += `${avis[i].utilisateur}: ${avis[i].commentaire} <br>`;
+        }
+        pieceElement.appendChild(avisElement)
      });
  
     }
