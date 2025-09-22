@@ -4,6 +4,13 @@
 //Nous utilisons ensuite cet identifiant pour construire le chemin de la ressource sur laquelle créer la requête HTTP avec la fonction fetch.
 
 
+// ****************************RESUME SUR LE TRAITEMENT DE LA REPONSE DU SERVEUR*****************
+
+// Pour traiter les réponses de vos requêtes :
+//     Utilisez la syntaxe async/await pour mettre en pause le programme en attendant la réponse.
+//     Désérialisez (reconstruire) vos données pour décoder le contenu de la réponse.
+// Avec cette réponse, vous pouvez mettre à jour la page web.
+
 export function ajoutListenersAvis() {
 
     const piecesElements = document.querySelectorAll(".fiches article button");
@@ -18,6 +25,8 @@ export function ajoutListenersAvis() {
         const reponse = await fetch(`http://localhost:8081/pieces/${id}/avis`);
 
     // Pour y parvenir, nous rajoutons un appel à la fonction JSON sur l’objet reponse. Il faut également utiliser le mot clé await, car cette opération est aussi asynchrone
+    // Les donnees ont ete reconstruit en format JSON et affecte a une constante 
+    
         const avis = await reponse.json();
     
     //Ajout des avis aux domes
