@@ -1,5 +1,5 @@
 // Récupération des pièces depuis le fichier JSON
-const reponse = await fetch('../pieces-autos.json');
+const reponse = await fetch('http://localhost:8081/pieces');
 const pieces = await reponse.json();
 
 //Importation de la fonction ajoutListenersAvis depuis le fichier avis.js
