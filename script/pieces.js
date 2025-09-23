@@ -2,9 +2,12 @@
 const reponse = await fetch('http://localhost:8081/pieces');
 const pieces = await reponse.json();
 
-//Importation de la fonction ajoutListenersAvis depuis le fichier avis.js
-import { ajoutListenersAvis } from "../avis.js";
+//Importation de la fonction ajoutListenersAvis depuis le fichier avis.js et ajoutListenerEnvoyerAvis (pour envoyer des avis sur l'API)
 
+import { ajoutListenersAvis, ajoutListenerEnvoyerAvis } from "../avis.js";
+
+//Appel de la focntion d'envoie d'avis a travers le formulaire vers l'API
+ajoutListenerEnvoyerAvis()
 
 //Fonction qui permettra de mettre a jour l'affichage de la page 
 function genererPieces(pieces){

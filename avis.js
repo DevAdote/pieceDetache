@@ -26,10 +26,10 @@ export function ajoutListenersAvis() {
 
     // Pour y parvenir, nous rajoutons un appel à la fonction JSON sur l’objet reponse. Il faut également utiliser le mot clé await, car cette opération est aussi asynchrone
     // Les donnees ont ete reconstruit en format JSON et affecte a une constante 
-    
+
         const avis = await reponse.json();
     
-    //Ajout des avis aux domes
+    //Afficher des avis aux domes
         const pieceElement = event.target.parentElement;
 
         const avisElement = document.createElement("p");
@@ -42,4 +42,13 @@ export function ajoutListenersAvis() {
     }
  
  }
+
+
+ //Envoie du formulaire a l'API
+ export function ajoutListenerEnvoyerAvis() {
+   const formulaireAvis = document.querySelector(".formulaire-avis");
+   formulaireAvis.addEventListener("submit", function (event) {
+        event.preventDefault();
+   });
+}
  
